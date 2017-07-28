@@ -40,6 +40,30 @@
 		compatible = "winbond,w25q128", "jedec,spi-nor";
 		spi-max-frequency = <70000000>;
 		m25p,fast-read;
+
+		partition@u-boot-spl {
+			label = "u-boot-spl";
+			reg = <0x00000000 0x00010000>;
+			read-only;
+		};
+		partition@u-boot {
+			label = "u-boot";
+			reg = <0x00010000 0x00050000>;
+			read-only;
+		};
+		partition@u-boot-env {
+			label = "u-boot-env";
+			reg = <0x00060000 0x00010000>;
+			read-only;
+		};
+		partition@kernel {
+			label = "kernel";
+			reg = <0x00070000 0x00790000>;
+		};
+		partition@rootfs {
+			label = "rootfs";
+			reg = <0x00800000 0x00800000>;
+		};
 	};
 };
 
